@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: flux-system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: podinfo
+      sourceRef:
+        kind: HelmRepository
+        name: podinfo-repo
+        namespace: flux-system
+  install:
+    createNamespace: true
+  targetNamespace: podinfo-demo
+  values:
+    replicaCount: 2
+    ui:
+      color: "#00FF00"
