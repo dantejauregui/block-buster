@@ -16,6 +16,8 @@ spec:
     createNamespace: true
   targetNamespace: podinfo-demo
   values:
+    service:
+      type: Nodeport
     replicaCount: 2
     ui:
       color: "#00FF00"
